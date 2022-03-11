@@ -27,7 +27,7 @@ class UserController extends Controller
         //En vez de utilizar el modelo, se devuelve el array $users emulando 
         //una llamada a la base de datos, pero en un caso real se haría una llamada
         //al método ::all() del modelo User
-
+    
         return $this->users;
     }
     public function getUserById($id)
@@ -52,6 +52,7 @@ class UserController extends Controller
             "status" => "OK",
             "nombre" => $request->nombre,
             "apellidos" => $request->apellidos,
+            "nombre" => $request->loquesea,
             "email" => $request->email
             //probar a devolver también el campo apellidos
         ]);
@@ -60,6 +61,18 @@ class UserController extends Controller
     {
 
         echo "otherthing";
+        if($request->premium==="true"){
+            return response()->json([
+              "hola"=> "todo el mundo",
+              "otroDato" => 23,
+              "mas datos"=>[987,1234,765]  
+            ]); 
+        }else{
+            return response()->json([
+              "adios"=>  "todo el mundo" 
+            ]) ;  
+        }
+        
         // Crear una función en la que si se pasa el parámetro "premium" a true en el $request, 
         // devuelva un código de estado "OK" y un mensaje "el usuario es premium". 
         // En caso de que se le pase premium false, devolver un código de estado "KO" y mensaje "error: usuario no premium"
