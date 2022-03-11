@@ -51,12 +51,15 @@ class UserController extends Controller
         return response()->json([
             "status" => "OK",
             "nombre" => $request->nombre,
+            "apellidos" => $request->apellidos,
             "email" => $request->email
             //probar a devolver también el campo apellidos
         ]);
     }
     public function postOtherThing(Request $request)
     {
+
+        echo "otherthing";
         // Crear una función en la que si se pasa el parámetro "premium" a true en el $request, 
         // devuelva un código de estado "OK" y un mensaje "el usuario es premium". 
         // En caso de que se le pase premium false, devolver un código de estado "KO" y mensaje "error: usuario no premium"
